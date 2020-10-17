@@ -44,3 +44,16 @@ $(document).ready(function () {
 1. how important is the lat and lon information?
 2. if it is important, then how does this api get me this information?
 */
+
+var queryURL =
+  "https://api.openweathermap.org/data/2.5/weather?q=" +
+  city +
+  "&units=imperial&appid=b6888160cea1ac7e31cb37a7c245701a";
+$.ajax({
+  method: "GET",
+  url: queryURL,
+}).then(function (response) {
+  console.log(response);
+  var temperature = response.main.temp;
+  console.log("temperature: " + temperature);
+});
