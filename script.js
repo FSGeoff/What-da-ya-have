@@ -1,90 +1,91 @@
-// create index.html, script.js and css files
-
-// link js and css to index.html
-
-// declare global variables
-var martaAPIkey = "1b88df3e-8bf3-472c-ae67-2497f94f1d0f";
-var martaArray = [];
-// create an array of objects of each Marta station and the match long/lat numbers (gold and green lines)
-
-// start function to call marta to retrieve real time arrivals for train
 $(document).ready(function () {
-  // building api call
-  var queryURL =
-    "http://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=1b88df3e-8bf3-472c-ae67-2497f94f1d0f";
-  // "http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=1b88df3e-8bf3-472c-ae67-2497f94f1d0f";
+	var latitude = "33.954600";
+	var longitude = "-84.501590";
 
-  // set marta api through ajax function
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-    var objectCount = Object.keys(response).length;
-    console.log("object count: " + objectCount);
-    // var martaArray = new Array[objectCount]();
+	const zCall = {
+		async: true,
+		crossDomain: true,
+		url:
+			"https://developers.zomato.com/api/v2.1/geocode?lat=" +
+			latitude +
+			"&lon=" +
+			longitude,
+		method: "GET",
+		headers: {
+			"user-key": "5c3b3a505188c7c86aa5ca5bf3a93cf9",
+		},
+	};
 
-    // create an array of objects of each Marta station and the match long/lat numbers (gold and green lines)
-    martaArray = response;
-    console.log(martaArray);
-    console.log(martaArray[0].DESTINATION);
-    console.log(martaArray[0].STATION);
-    console.log(martaArray[0].LINE);
-    console.log(martaArray[0].WAITING_SECONDS);
-  });
+	$.ajax(zCall).done(function (response) {
+		console.log(response);
+		for (let i = 0; i < response.nearby_restaurants.length; i++) {
+			// console.log(response.nearby_restaurants[i]);
+			console.log(
+				"nearby restaurants: " +
+					response.nearby_restaurants[i].restaurant.name
+			);
+			console.log(
+				"Address: " +
+					response.nearby_restaurants[i].restaurant.location.address
+			);
 
-  //  revisit later to see if needed
-  //   for (let i = 0; i < response.response.docs.length; i++) {
-  //     $("id").text(docs[i]);
-  //     console.log(docs);
-  //   }
-});
+			console.log(
+				"Average cost for two: " +
+					response.nearby_restaurants[i].restaurant
+						.average_cost_for_two
+			);
+			// console.log("Menu: " + response.restaurant);
+			console.log(
+				"Specialty Dish: " +
+					response.nearby_restaurants[i].restaurant.cuisines
+			);
 
-/* questions to team
-1. how important is the lat and lon information?
-2. if it is important, then how does this api get me this information?
-*/
-$(document).ready(function () {
-  var latitude = "33.954600";
-  var longitude = "-84.501590";
+			console.log(
+				"url: " + response.nearby_restaurants[i].restaurant.url
+			);
+			console.log("_____________________________________________");
+			console.log("_____________________________________________");
+		}
+	});
 
-  const zCall = {
-    async: true,
-    crossDomain: true,
-    url:
-      "https://developers.zomato.com/api/v2.1/geocode?lat=" +
-      latitude +
-      "&lon=" +
-      longitude,
-    method: "GET",
-    headers: {
-      "user-key": "5c3b3a505188c7c86aa5ca5bf3a93cf9",
-    },
-  };
+	trainStops = [
+		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
 
-  $.ajax(zCall).done(function (response) {
-    console.log(response);
-    for (let i = 0; i < response.nearby_restaurants.length; i++) {
-      // console.log(response.nearby_restaurants[i]);
-      console.log(
-        "nearby restaurants: " + response.nearby_restaurants[i].restaurant.name
-      );
-      console.log(
-        "Address: " + response.nearby_restaurants[i].restaurant.location.address
-      );
+		{
+			station: "Inman Park",
+			longitude: "-84.3628833784582",
+			latitude: "33.753954",
+		},
 
-      console.log(
-        "Average cost for two: " +
-          response.nearby_restaurants[i].restaurant.average_cost_for_two
-      );
-      // console.log("Menu: " + response.restaurant);
-      console.log(
-        "Specialty Dish: " + response.nearby_restaurants[i].restaurant.cuisines
-      );
+		{
+			station: "Georgia State",
+			longitude: "-84.38652",
+			latitude: "33.750324",
+		},
+		{
+			station: "King Memorial",
+			longitude: "-84.37572",
+			latitude: "33.75032",
+		},
 
-      console.log("url: " + response.nearby_restaurants[i].restaurant.url);
-      console.log("_____________________________________________");
-      console.log("_____________________________________________");
-    }
-  });
+		{
+			station: "Five Points",
+			longitude: "-84.38972",
+			latitude: "33.75233",
+		},
+
+		{
+			station: "Peachtree Center",
+			longitude: "-84.388023",
+			latitude: "33.760342",
+		},
+
+		{ station: "Midtown", longitude: "-84.3866", latitude: "33.78146" },
+
+		{ station: "North Ave", longitude: "-84.38731", latitude: "	33.774213" },
+
+		{ station: "Buckhead", longitude: "-84.367737", latitude: "33.847462" },
+
+		{ station: "Lenox", longitude: "-84.356098", latitude: "33.846843" },
+	];
 });
