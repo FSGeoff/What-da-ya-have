@@ -44,8 +44,8 @@ $(document).ready(function () {
 				var restDiv = $("<div>");
 				restDiv.attr("id", "rest-div");
 
-				// Create <p> element for restaurant name
-				var restName = $("<p>");
+				// Create <h3> element for restaurant name
+				var restName = $("<h3>");
 				restName.attr("class", "rest-info");
 				restName.attr("id", "rest-name");
 				restName.text(restArray[i].restaurant.name);
@@ -63,7 +63,7 @@ $(document).ready(function () {
 				restAvgCost.attr("class", "rest-info");
 				restAvgCost.attr("id", "rest-cost");
 				restAvgCost.text(
-					"Average cost for 2 people: " +
+					"Average cost for 2 people: $" +
 						restArray[i].restaurant.average_cost_for_two
 				);
 				restDiv.append(restAvgCost);
