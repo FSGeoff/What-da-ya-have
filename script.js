@@ -130,7 +130,7 @@ $(document).ready(function () {
 
 		{ station: "North Ave", longitude: "-84.38731", latitude: "	33.774213" },
 
-		{ station: "Buckhead", longitude: "-84.367737", latitude: "33.847462" },
+		{ station: "West End", longitude: "-84.41406", latitude: "33.73688" },
 
 		{ station: "Lenox", longitude: "-84.356098", latitude: "33.846843" },
 	];
