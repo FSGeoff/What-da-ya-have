@@ -39,6 +39,53 @@ $(document).ready(function () {
 				console.log("url: " + restArray[i].restaurant.url);
 				console.log("_____________________________________________");
 				console.log("_____________________________________________");
+
+				// Create div to hold restaurant information
+				var restDiv = $("<div>");
+				restDiv.attr("id", "rest-div");
+
+				// Create <p> element for restaurant name
+				var restName = $("<p>");
+				restName.attr("class", "rest-info");
+				restName.attr("id", "rest-name");
+				restName.text(restArray[i].restaurant.name);
+				restDiv.append(restName);
+
+				// Create <p> element for restaurant address
+				var restAddress = $("<p>");
+				restAddress.attr("class", "rest-info");
+				restAddress.attr("id", "rest-addr");
+				restAddress.text(restArray[i].restaurant.location.address);
+				restDiv.append(restAddress);
+
+				// Create <p> element for restaurant average cost for 2
+				restAvgCost = $("<p>");
+				restAvgCost.attr("class", "rest-info");
+				restAvgCost.attr("id", "rest-cost");
+				restAvgCost.text(
+					"Average cost for 2 people: " +
+						restArray[i].restaurant.average_cost_for_two
+				);
+				restDiv.append(restAvgCost);
+
+				// Create <p> element for restaurant specialty dishes
+				var restSpecialDish = $("<p>");
+				restSpecialDish.attr("class", "rest-info");
+				restSpecialDish.attr("id", "spec-dish");
+				restSpecialDish.text(
+					"Specializes in: " + restArray[i].restaurant.cuisines
+				);
+				restDiv.append(restSpecialDish);
+
+				//Create <a> tag to route to Zamato Page link
+				var restLink = $("<a>");
+				restLink.attr("class", "rest-info");
+				restLink.attr("href", restArray[i].restaurant.url);
+				restLink.attr("id", "rest-link");
+				restLink.text("Zamato Page");
+				restDiv.append(restLink);
+
+				$("#rest-box").append(restDiv);
 			}
 		});
 	}
