@@ -1,8 +1,11 @@
 $(document).ready(function () {
-	var latitude = "33.954600";
-	var longitude = "-84.501590";
+	var getStation = JSON.parse(localStorage.getItem("buttonChoice"));
+	if (getStation) {
+		restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
+	}
 
 	function restaurantCall(lon, lat) {
+		$("#rest-box").empty();
 		const zCall = {
 			async: true,
 			crossDomain: true,
@@ -31,7 +34,7 @@ $(document).ready(function () {
 					"Average cost for two: " +
 						restArray[i].restaurant.average_cost_for_two
 				);
-				// console.log("Menu: " + response.restaurant);
+
 				console.log(
 					"Specialty Dish: " + restArray[i].restaurant.cuisines
 				);
@@ -90,6 +93,7 @@ $(document).ready(function () {
 		});
 	}
 
+	// Array of objects. Holds all station names and longitude/latitude
 	trainStops = [
 		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
 
@@ -126,16 +130,17 @@ $(document).ready(function () {
 
 		{ station: "North Ave", longitude: "-84.38731", latitude: "	33.774213" },
 
-		{ station: "Buckhead", longitude: "-84.367737", latitude: "33.847462" },
+		{ station: "West End", longitude: "-84.41406", latitude: "33.73688" },
 
 		{ station: "Lenox", longitude: "-84.356098", latitude: "33.846843" },
 	];
 
 	$(".js-station").on("click", function () {
-		console.log($(this).text().trim());
+		var buttonChoice = $(this).text().trim();
 		for (let i = 0; i < trainStops.length; i++) {
-			if (trainStops[i].station === $(this).text().trim()) {
+			if (trainStops[i].station === buttonChoice) {
 				restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
+				localStorage.setItem("station", JSON.stringify(buttonChoice));
 			}
 		}
 	});
