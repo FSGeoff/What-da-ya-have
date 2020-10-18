@@ -46,9 +46,7 @@ $(document).ready(function () {
 */
 
 var queryURL =
-  "https://api.openweathermap.org/data/2.5/weather?q=" +
-  city +
-  "&units=imperial&appid=b6888160cea1ac7e31cb37a7c245701a";
+  "https://api.openweathermap.org/data/2.5/weather?q=Atlanta&units=imperial&appid=b6888160cea1ac7e31cb37a7c245701a";
 $.ajax({
   method: "GET",
   url: queryURL,
@@ -56,4 +54,7 @@ $.ajax({
   console.log(response);
   var temperature = response.main.temp;
   console.log("temperature: " + temperature);
+  $(".displaycurrenttemp").append(
+    "Atlanta Current Weather: " + temperature + " &#8457;"
+  );
 });
