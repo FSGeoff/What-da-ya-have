@@ -27,6 +27,7 @@
 }
 .p{ 
     font-weight:900;
+    background-clip: url("https://www.noaa.gov/sites/default/files/styles/crop_394x394/public/thumbnails/image/FocusArea__Weather-02.jpg?itok=fO6wu2A8");
 }
 .logo{
 max-width:50%;
@@ -44,6 +45,32 @@ margin:0 auto 10px;
 
 .w3-card{
     position: float right;
-    padding-left:50%;
+    padding-left:150%;
+}
+
+.restaurant-container:after{
+    position :absolute;
+    top: 0;
+    left:0;
+    content:"";
+    background-image: url("https://images.fineartamerica.com/images-medium-large-5/atlanta-panoramic-black-and-white-frozen-in-time-fine-art-photography.jpg");
+    opacity: 0.5;
+    background-size: cover;
+    width: 100%;
+    height:100%;  
+
 
 }
+.restaurant-container{
+    position:relative;
+    min-height: 800px;
+
+}
+.restaurant-content{
+    z-index: 1;
+    position: relative;
+    color:black ;
+    font-style :italic;
+}
+
+
