@@ -1,4 +1,9 @@
 $(document).ready(function () {
+	var getStation = JSON.parse(localStorage.getItem("buttonChoice"));
+	if (getStation) {
+		restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
+	}
+
 	function restaurantCall(lon, lat) {
 		$("#rest-box").empty();
 		const zCall = {
@@ -135,6 +140,7 @@ $(document).ready(function () {
 		for (let i = 0; i < trainStops.length; i++) {
 			if (trainStops[i].station === buttonChoice) {
 				restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
+				localStorage.setItem("station", JSON.stringify(buttonChoice));
 			}
 		}
 	});
