@@ -71,12 +71,16 @@ $(document).ready(function () {
 
 				// Create div to hold restaurant information
 				var restDiv = $("<div>");
+				restDiv.css("margin", "5 px");
 				restDiv.attr("id", "rest-div");
 
 				// Create <h3> element for restaurant name
 				var restName = $("<h3>");
 				restName.attr("class", "rest-info");
 				restName.attr("id", "rest-name");
+				// restName.css("background-color", "#c1bbbb");
+				// restName.css("color", "#0818dc");
+
 				restName.text(restArray[i].restaurant.name);
 				restDiv.append(restName);
 
@@ -126,7 +130,6 @@ $(document).ready(function () {
 			method: "GET",
 		}).then(function (response) {
 			for (let i = 0; i < response.length; i++) {
-				console.log(response[0].LINE);
 				// Checks to see if station name in API matches name in trainStops.station
 				if (
 					response[i].STATION.toLowerCase()
@@ -138,7 +141,6 @@ $(document).ready(function () {
 					stationDiv.attr("id", "sta-div");
 
 					// <h3> element for station name
-
 					var currentStation = $("<h4>");
 					currentStation.attr("class", "station");
 					currentStation.attr("id", "cur-sta");
@@ -154,7 +156,7 @@ $(document).ready(function () {
 							response[i].DIRECTION +
 							" bound " +
 							response[i].LINE +
-							" train will arrive @: " +
+							" line train will arrive @: " +
 							response[i].NEXT_ARR
 					);
 					stationDiv.append(timeAndDirection);
