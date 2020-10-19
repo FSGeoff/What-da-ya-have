@@ -126,29 +126,20 @@ $(document).ready(function () {
 			method: "GET",
 		}).then(function (response) {
 			for (let i = 0; i < response.length; i++) {
-				// console.log(response);
+				console.log(response[0].LINE);
 				// Checks to see if station name in API matches name in trainStops.station
 				if (
 					response[i].STATION.toLowerCase()
 						.substr(0, response[i].STATION.toLowerCase().length - 7)
 						.trim() === stationSelected.toLowerCase()
 				) {
-					console.log(
-						response[i].STATION.toLowerCase()
-							.substr(
-								0,
-								response[i].STATION.toLowerCase().length - 7
-							)
-							.trim()
-					);
-					console.log(stationSelected.toLowerCase());
-
 					// Div to hold station name and time
 					var stationDiv = $("<div>");
 					stationDiv.attr("id", "sta-div");
 
 					// <h3> element for station name
-					var currentStation = $("<h3>");
+
+					var currentStation = $("<h4>");
 					currentStation.attr("class", "station");
 					currentStation.attr("id", "cur-sta");
 					currentStation.text(response[i].STATION);
@@ -161,6 +152,8 @@ $(document).ready(function () {
 					timeAndDirection.text(
 						"The next " +
 							response[i].DIRECTION +
+							" bound " +
+							response[i].LINE +
 							" train will arrive @: " +
 							response[i].NEXT_ARR
 					);
