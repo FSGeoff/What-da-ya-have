@@ -145,7 +145,7 @@ $(document).ready(function () {
 					var stationDiv = $("<div>");
 					stationDiv.attr("id", "sta-div");
 					stationDiv.css("background-color", "#469bd8");
-					stationDiv.css("color", "orange");
+					stationDiv.css("color", "white");
 					stationDiv.append(currentStation);
 
 					// <p> element for next arrival time
