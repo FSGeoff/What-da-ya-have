@@ -1,11 +1,56 @@
 $(document).ready(function () {
 	var getStation = JSON.parse(localStorage.getItem("buttonChoice"));
+
+	// Array of objects. Holds all station names and longitude/latitude
+	var trainStops = [
+		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
+
+		{
+			station: "Inman Park",
+			longitude: "-84.3628833784582",
+			latitude: "33.753954",
+		},
+
+		{
+			station: "Georgia State",
+			longitude: "-84.38652",
+			latitude: "33.750324",
+		},
+		{
+			station: "King Memorial",
+			longitude: "-84.37572",
+			latitude: "33.75032",
+		},
+
+		{
+			station: "Five Points",
+			longitude: "-84.38972",
+			latitude: "33.75233",
+		},
+
+		{
+			station: "Peachtree Center",
+			longitude: "-84.388023",
+			latitude: "33.760342",
+		},
+
+		{ station: "Midtown", longitude: "-84.3866", latitude: "33.78146" },
+
+		{ station: "North Ave", longitude: "-84.38731", latitude: "	33.774213" },
+
+		{ station: "West End", longitude: "-84.41406", latitude: "33.73688" },
+
+		{ station: "Lenox", longitude: "-84.356098", latitude: "33.846843" },
+	];
+
 	if (getStation) {
-		restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
+		restaurantCall(trainStops.longitude, trainStops.latitude);
 	}
 
 	function restaurantCall(lon, lat) {
 		$("#rest-box").empty();
+		$("#sel-trn").empty();
+
 		const zCall = {
 			async: true,
 			crossDomain: true,
@@ -23,25 +68,6 @@ $(document).ready(function () {
 			console.log(response);
 			for (let i = 0; i < response.nearby_restaurants.length; i++) {
 				var restArray = response.nearby_restaurants;
-				console.log(
-					"nearby restaurants: " + restArray[i].restaurant.name
-				);
-				console.log(
-					"Address: " + restArray[i].restaurant.location.address
-				);
-
-				console.log(
-					"Average cost for two: " +
-						restArray[i].restaurant.average_cost_for_two
-				);
-
-				console.log(
-					"Specialty Dish: " + restArray[i].restaurant.cuisines
-				);
-
-				console.log("url: " + restArray[i].restaurant.url);
-				console.log("_____________________________________________");
-				console.log("_____________________________________________");
 
 				// Create div to hold restaurant information
 				var restDiv = $("<div>");
@@ -85,7 +111,7 @@ $(document).ready(function () {
 				restLink.attr("class", "rest-info");
 				restLink.attr("href", restArray[i].restaurant.url);
 				restLink.attr("id", "rest-link");
-				restLink.text("Zamato Page");
+				restLink.text("More Info");
 				restDiv.append(restLink);
 
 				$("#rest-box").append(restDiv);
@@ -93,47 +119,55 @@ $(document).ready(function () {
 		});
 	}
 
-	// Array of objects. Holds all station names and longitude/latitude
-	trainStops = [
-		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
+	// function martaCall(stationSelected) {
+	// 	$.ajax({
+	// 		url:
+	// 			"http://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
+	// 		method: "GET",
+	// 	}).then(function (response) {
+	// 		for (let i = 0; i < response.length; i++) {
+	// 			// console.log(response);
+	// 			// Checks to see if station name in API matches name in trainStops.station
+	// 			if (
+	// 				response[i].STATION.toLowerCase().substr(
+	// 					0,
+	// 					response[i].STATION.toLowerCase().length - 7
+	// 				) === stationSelected.toLowerCase()
+	// 			) {
+	// 				console.log(
+	// 					response[i].STATION.toLowerCase().substr(
+	// 						0,
+	// 						response[i].STATION.toLowerCase().length - 7
+	// 					)
+	// 				);
+	// 				console.log(stationSelected);
 
-		{
-			station: "Inman Park",
-			longitude: "-84.3628833784582",
-			latitude: "33.753954",
-		},
+	// 				// Div to hold station name and time
+	// 				var stationDiv = $("<div>");
+	// 				stationDiv.attr("id", "sta-div");
 
-		{
-			station: "Georgia State",
-			longitude: "-84.38652",
-			latitude: "33.750324",
-		},
-		{
-			station: "King Memorial",
-			longitude: "-84.37572",
-			latitude: "33.75032",
-		},
+	// 				// <h3> element for station name
+	// 				var currentStation = $("<h3>");
+	// 				currentStation.attr("class", "station");
+	// 				currentStation.attr("id", "cur-sta");
+	// 				currentStation.text("CURRENT STATION: " + response.STATION);
+	// 				stationDiv.append(currentStation);
 
-		{
-			station: "Five Points",
-			longitude: "-84.38972",
-			latitude: "33.75233",
-		},
-
-		{
-			station: "Peachtree Center",
-			longitude: "-84.388023",
-			latitude: "33.760342",
-		},
-
-		{ station: "Midtown", longitude: "-84.3866", latitude: "33.78146" },
-
-		{ station: "North Ave", longitude: "-84.38731", latitude: "	33.774213" },
-
-		{ station: "West End", longitude: "-84.41406", latitude: "33.73688" },
-
-		{ station: "Lenox", longitude: "-84.356098", latitude: "33.846843" },
-	];
+	// 				// <p> element for next arrival time
+	// 				var timeAndDirection = $("<p>");
+	// 				timeAndDirection.attr("class", "time");
+	// 				timeAndDirection.attr("id", "tim-dir");
+	// 				timeAndDirection.text(
+	// 					"The next " +
+	// 						response[i].DIRECTION +
+	// 						" train will arrive @: " +
+	// 						response[i].NEXT_ARR
+	// 				);
+	// 				stationDiv.append(timeAndDirection);
+	// 				// $(#"id-of div").append(stationDiv);
+	// 			}
+	// 		}
+	// 	});
 
 	$(".js-station").on("click", function () {
 		var buttonChoice = $(this).text().trim();
@@ -141,6 +175,7 @@ $(document).ready(function () {
 			if (trainStops[i].station === buttonChoice) {
 				restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
 				localStorage.setItem("station", JSON.stringify(buttonChoice));
+				// martaCall(buttonChoice);
 			}
 		}
 	});
