@@ -165,7 +165,7 @@ $(document).ready(function () {
 							response[i].NEXT_ARR
 					);
 					stationDiv.append(timeAndDirection);
-					$("#rest-box").append(stationDiv);
+					$("#rest-box").append(stationDiv); //need div to append to!!!!
 				}
 			}
 		});
