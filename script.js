@@ -23,25 +23,25 @@ $(document).ready(function () {
 			console.log(response);
 			for (let i = 0; i < response.nearby_restaurants.length; i++) {
 				var restArray = response.nearby_restaurants;
-				console.log(
-					"nearby restaurants: " + restArray[i].restaurant.name
-				);
-				console.log(
-					"Address: " + restArray[i].restaurant.location.address
-				);
+				// console.log(
+				// 	"nearby restaurants: " + restArray[i].restaurant.name
+				// );
+				// console.log(
+				// 	"Address: " + restArray[i].restaurant.location.address
+				// );
 
-				console.log(
-					"Average cost for two: " +
-						restArray[i].restaurant.average_cost_for_two
-				);
+				// console.log(
+				// 	"Average cost for two: " +
+				// 		restArray[i].restaurant.average_cost_for_two
+				// );
 
-				console.log(
-					"Specialty Dish: " + restArray[i].restaurant.cuisines
-				);
+				// console.log(
+				// 	"Specialty Dish: " + restArray[i].restaurant.cuisines
+				// );
 
-				console.log("url: " + restArray[i].restaurant.url);
-				console.log("_____________________________________________");
-				console.log("_____________________________________________");
+				// console.log("url: " + restArray[i].restaurant.url);
+				// console.log("_____________________________________________");
+				// console.log("_____________________________________________");
 
 				// Create div to hold restaurant information
 				var restDiv = $("<div>");
