@@ -144,14 +144,9 @@ $(document).ready(function () {
 					// Div to hold station name and time
 					var stationDiv = $("<div>");
 					stationDiv.attr("id", "sta-div");
+					stationDiv.css("background-color", "#469bd8");
+					stationDiv.css("color", "orange");
 					stationDiv.append(currentStation);
-
-					// <h3> element for station name
-					// var currentStation = $("<h4>");
-					// currentStation.attr("class", "station");
-					// currentStation.attr("id", "cur-sta");
-					// currentStation.text(response[i].STATION);
-					// stationDiv.append(currentStation);
 
 					// <p> element for next arrival time
 					var timeAndDirection = $("<p>");
@@ -163,7 +158,7 @@ $(document).ready(function () {
 							" bound " +
 							response[i].LINE +
 							" line train will arrive @: " +
-							response[i].NEXT_ARR
+							response[i].NEXT_ARR.slice(0, 5)
 					);
 					stationDiv.append(timeAndDirection);
 					$("#rest-box").append(stationDiv); //need div to append to!!!!
