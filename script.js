@@ -129,6 +129,11 @@ $(document).ready(function () {
 				"http://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
 			method: "GET",
 		}).then(function (response) {
+			var currentStation = $("<h4>");
+			currentStation.attr("class", "station");
+			currentStation.attr("id", "cur-sta");
+			currentStation.text(stationSelected.toUpperCase() + " STATION");
+
 			for (let i = 0; i < response.length; i++) {
 				// Checks to see if station name in API matches name in trainStops.station
 				if (
@@ -139,13 +144,14 @@ $(document).ready(function () {
 					// Div to hold station name and time
 					var stationDiv = $("<div>");
 					stationDiv.attr("id", "sta-div");
+					stationDiv.append(currentStation);
 
 					// <h3> element for station name
-					var currentStation = $("<h4>");
-					currentStation.attr("class", "station");
-					currentStation.attr("id", "cur-sta");
-					currentStation.text(response[i].STATION);
-					stationDiv.append(currentStation);
+					// var currentStation = $("<h4>");
+					// currentStation.attr("class", "station");
+					// currentStation.attr("id", "cur-sta");
+					// currentStation.text(response[i].STATION);
+					// stationDiv.append(currentStation);
 
 					// <p> element for next arrival time
 					var timeAndDirection = $("<p>");
