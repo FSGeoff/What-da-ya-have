@@ -119,63 +119,65 @@ $(document).ready(function () {
 		});
 	}
 
-	// function martaCall(stationSelected) {
-	// 	$.ajax({
-	// 		url:
-	// 			"http://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
-	// 		method: "GET",
-	// 	}).then(function (response) {
-	// 		for (let i = 0; i < response.length; i++) {
-	// 			// console.log(response);
-	// 			// Checks to see if station name in API matches name in trainStops.station
-	// 			if (
-	// 				response[i].STATION.toLowerCase().substr(
-	// 					0,
-	// 					response[i].STATION.toLowerCase().length - 7
-	// 				) === stationSelected.toLowerCase()
-	// 			) {
-	// 				console.log(
-	// 					response[i].STATION.toLowerCase().substr(
-	// 						0,
-	// 						response[i].STATION.toLowerCase().length - 7
-	// 					)
-	// 				);
-	// 				console.log(stationSelected);
+	function martaCall(stationSelected) {
+		$.ajax({
+			url:
+				"http://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
+			method: "GET",
+		}).then(function (response) {
+			for (let i = 0; i < response.length; i++) {
+				// console.log(response);
+				// Checks to see if station name in API matches name in trainStops.station
+				if (
+					response[i].STATION.toLowerCase()
+						.substr(0, response[i].STATION.toLowerCase().length - 7)
+						.trim() === stationSelected.toLowerCase()
+				) {
+					console.log(
+						response[i].STATION.toLowerCase()
+							.substr(
+								0,
+								response[i].STATION.toLowerCase().length - 7
+							)
+							.trim()
+					);
+					console.log(stationSelected.toLowerCase());
 
-	// 				// Div to hold station name and time
-	// 				var stationDiv = $("<div>");
-	// 				stationDiv.attr("id", "sta-div");
+					// Div to hold station name and time
+					var stationDiv = $("<div>");
+					stationDiv.attr("id", "sta-div");
 
-	// 				// <h3> element for station name
-	// 				var currentStation = $("<h3>");
-	// 				currentStation.attr("class", "station");
-	// 				currentStation.attr("id", "cur-sta");
-	// 				currentStation.text("CURRENT STATION: " + response.STATION);
-	// 				stationDiv.append(currentStation);
+					// <h3> element for station name
+					var currentStation = $("<h3>");
+					currentStation.attr("class", "station");
+					currentStation.attr("id", "cur-sta");
+					currentStation.text(response[i].STATION);
+					stationDiv.append(currentStation);
 
-	// 				// <p> element for next arrival time
-	// 				var timeAndDirection = $("<p>");
-	// 				timeAndDirection.attr("class", "time");
-	// 				timeAndDirection.attr("id", "tim-dir");
-	// 				timeAndDirection.text(
-	// 					"The next " +
-	// 						response[i].DIRECTION +
-	// 						" train will arrive @: " +
-	// 						response[i].NEXT_ARR
-	// 				);
-	// 				stationDiv.append(timeAndDirection);
-	// 				// $(#"id-of div").append(stationDiv);
-	// 			}
-	// 		}
-	// 	});
-
+					// <p> element for next arrival time
+					var timeAndDirection = $("<p>");
+					timeAndDirection.attr("class", "time");
+					timeAndDirection.attr("id", "tim-dir");
+					timeAndDirection.text(
+						"The next " +
+							response[i].DIRECTION +
+							" train will arrive @: " +
+							response[i].NEXT_ARR
+					);
+					stationDiv.append(timeAndDirection);
+					$("#rest-box").append(stationDiv);
+				}
+			}
+		});
+	}
 	$(".js-station").on("click", function () {
 		var buttonChoice = $(this).text().trim();
 		for (let i = 0; i < trainStops.length; i++) {
 			if (trainStops[i].station === buttonChoice) {
 				restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
 				localStorage.setItem("station", JSON.stringify(buttonChoice));
-				// martaCall(buttonChoice);
+				var martaBtn = buttonChoice.toString();
+				martaCall(martaBtn);
 			}
 		}
 	});
