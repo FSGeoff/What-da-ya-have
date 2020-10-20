@@ -69,4 +69,18 @@
 
 .weather-container {
 	background-color: rgb(78, 169, 175);
+	/* test */
+}
+
+.displaycurrenttemp {
+	background-color: #fdbf43;
+	height: 30px;
+	margin: 0%;
+	padding: 5px;
+}
+.description {
+	background-color: #fdbf43;
+	height: 30px;
+	margin: 0%;
+	padding: 5px;
 }
