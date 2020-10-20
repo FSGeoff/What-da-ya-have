@@ -68,8 +68,18 @@
 }
 
 .weather-container {
+<<<<<<< HEAD
+	background-color: rgb(78, 169, 175);
+}
+.timeNow {
+	background-color: #fdbf43;
+	color: black;
+	text-align: center;
+	font-size: 25px;
+=======
   background-color: rgb(78, 169, 175);
   /* test */
+>>>>>>> 9aec3d00b5dff649ceaf665263f82fad310aa6af
 }
 
 .weatherColumn {

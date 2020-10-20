@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	var getStation = JSON.parse(localStorage.getItem("buttonChoice"));
-
+	var time = moment().format("LT");
 	// Array of objects. Holds all station names and longitude/latitude
 	var trainStops = [
 		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
@@ -83,8 +83,6 @@ $(document).ready(function () {
 				var restName = $("<h3>");
 				restName.attr("class", "rest-info");
 				restName.attr("id", "rest-name");
-				// restName.css("background-color", "#c1bbbb");
-				// restName.css("color", "#0818dc");
 
 				restName.text(restArray[i].restaurant.name);
 				restDiv.append(restName);
@@ -137,8 +135,11 @@ $(document).ready(function () {
 			var currentStation = $("<h4>");
 			currentStation.attr("class", "station");
 			currentStation.attr("id", "cur-sta");
+			currentStation.css("background-color", "#469bd8");
+			currentStation.css("color", "white");
+			currentStation.css("text-align", "center");
 			currentStation.text(stationSelected.toUpperCase() + " STATION");
-
+			$(".station").append(currentStation);
 			for (let i = 0; i < response.length; i++) {
 				// Checks to see if station name in API matches name in trainStops.station
 				if (
@@ -146,29 +147,23 @@ $(document).ready(function () {
 						.substr(0, response[i].STATION.toLowerCase().length - 7)
 						.trim() === stationSelected.toLowerCase()
 				) {
-					// Div to hold station name and time
-					var stationDiv = $("<div>");
-					stationDiv.attr("id", "sta-div");
-					stationDiv.css("background-color", "#469bd8");
-					stationDiv.css("color", "white");
-					stationDiv.css("text-align", "center");
-					stationDiv.css("border", "solid white 2 px");
-					stationDiv.append(currentStation);
-
 					// <p> element for next arrival time
 					var timeAndDirection = $("<p>");
 					timeAndDirection.attr("class", "time");
 					timeAndDirection.attr("id", "tim-dir");
+					timeAndDirection.css("background-color", "#469bd8");
+					timeAndDirection.css("color", "white");
+					timeAndDirection.css("text-align", "center");
 					timeAndDirection.text(
-						"The next " +
+						"NEXT " +
 							response[i].DIRECTION +
 							" bound " +
 							response[i].LINE +
-							" line train will arrive @ " +
+							" line:" +
 							response[i].NEXT_ARR.slice(0, 5)
 					);
-					stationDiv.append(timeAndDirection);
-					$("#rest-box").append(stationDiv); //need div to append to!!!!
+					$(".trainTime").append(timeAndDirection);
+					// $("#rest-box").append(stationDiv); //need div to append to!!!!
 				}
 			}
 		});
@@ -181,6 +176,10 @@ $(document).ready(function () {
 				localStorage.setItem("station", JSON.stringify(buttonChoice));
 				var martaBtn = buttonChoice.toString();
 				$("#select-train").empty();
+				$(".station").empty();
+				$(".trainTime").empty();
+				$(".timeNow").text(time);
+
 				martaCall(martaBtn);
 			}
 		}
