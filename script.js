@@ -180,6 +180,7 @@ $(document).ready(function () {
 				restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
 				localStorage.setItem("station", JSON.stringify(buttonChoice));
 				var martaBtn = buttonChoice.toString();
+				$("#select-train").empty();
 				martaCall(martaBtn);
 			}
 		}
