@@ -53,13 +53,10 @@ $.ajax({
 }).then(function (response) {
   console.log(response);
   var temperature = response.main.temp;
-  var humidity = response.main.humidity;
+  var description = response.weather[0].description;
   temperature = Math.round(temperature);
   console.log("temperature: " + temperature);
-  $(".displaycurrenttemp").append(
-    "Atlanta Current Weather: " + temperature + " &#8457;"
-  );
-  $(".displaycurrenthumidity").append(
-    "Atlanta Current Humidity: " + humidity + "%"
-  );
+  console.log(response.weather[0].description);
+  $(".displaycurrenttemp").append(temperature + " &#8457;" + "  ");
+  $(".description").append(description.toUpperCase());
 });
