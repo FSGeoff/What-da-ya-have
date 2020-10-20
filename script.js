@@ -178,7 +178,7 @@ $(document).ready(function () {
 				$("#select-train").empty();
 				$(".station").empty();
 				$(".trainTime").empty();
-				$(".timeNow").text(time);
+				$(".weather").text(time);
 
 				martaCall(martaBtn);
 			}
