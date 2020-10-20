@@ -131,7 +131,7 @@ $(document).ready(function () {
 	function martaCall(stationSelected) {
 		$.ajax({
 			url:
-				"http://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
+				"https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
 			method: "GET",
 		}).then(function (response) {
 			var currentStation = $("<h4>");
@@ -180,6 +180,7 @@ $(document).ready(function () {
 				restaurantCall(trainStops[i].longitude, trainStops[i].latitude);
 				localStorage.setItem("station", JSON.stringify(buttonChoice));
 				var martaBtn = buttonChoice.toString();
+				$("#select-train").empty();
 				martaCall(martaBtn);
 			}
 		}
