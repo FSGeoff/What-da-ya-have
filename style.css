@@ -69,7 +69,12 @@
 
 .weather-container {
 	background-color: rgb(78, 169, 175);
-	/* test */
+}
+.timeNow {
+	background-color: #fdbf43;
+	color: black;
+	text-align: center;
+	font-size: 25px;
 }
 
 .displaycurrenttemp {
