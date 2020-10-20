@@ -1,86 +1,80 @@
 .bg-cover {
-	margin-top: 20px;
-	position: relative;
-	color: #e4dede;
-	font-style: italic;
-	font-weight: bold;
-	background-color: black;
+  margin-top: 20px;
+  position: relative;
+  color: #e4dede;
+  font-style: italic;
+  font-weight: bold;
+  background-color: black;
 }
 .bg-content {
-	z-index: 1;
-	position: relative;
+  z-index: 1;
+  position: relative;
 }
 
 .bg-cover:after {
-	position: absolute;
-	top: 0;
-	left: 0;
-	content: "";
-	background-image: url("https://image.shutterstock.com/image-photo/collage-various-food-products-260nw-551207278.jpg");
-	opacity: 0.5;
-	background-size: cover;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background-image: url("https://image.shutterstock.com/image-photo/collage-various-food-products-260nw-551207278.jpg");
+  opacity: 0.5;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 .p {
-	font-weight: 900;
-	background-clip: url("https://www.noaa.gov/sites/default/files/styles/crop_394x394/public/thumbnails/image/FocusArea__Weather-02.jpg?itok=fO6wu2A8");
+  font-weight: 900;
+  background-clip: url("https://www.noaa.gov/sites/default/files/styles/crop_394x394/public/thumbnails/image/FocusArea__Weather-02.jpg?itok=fO6wu2A8");
 }
 .logo {
-	max-width: 50%;
-	margin: 0 auto 10px;
+  max-width: 50%;
+  margin: 0 auto 10px;
 }
 
 .input-group {
-	position: static;
-	width: 30%;
+  position: static;
+  width: 30%;
 }
 
 .ul {
-	position: static;
+  position: static;
 }
 
 .w3-card {
-	position: float right;
-	padding-left: 150%;
+  position: float right;
+  padding-left: 150%;
 }
 
 .restaurant-container:after {
-	position: absolute;
-	top: 0;
-	left: 0;
-	content: "";
-	background-image: url("https://images.fineartamerica.com/images-medium-large-5/atlanta-panoramic-black-and-white-frozen-in-time-fine-art-photography.jpg");
-	opacity: 0.5;
-	background-size: cover;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background-image: url("https://images.fineartamerica.com/images-medium-large-5/atlanta-panoramic-black-and-white-frozen-in-time-fine-art-photography.jpg");
+  opacity: 0.5;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 .restaurant-container {
-	position: relative;
-	min-height: 800px;
+  position: relative;
+  min-height: 800px;
 }
 .restaurant-content {
-	z-index: 1;
-	position: relative;
-	color: black;
-	font-style: italic;
+  z-index: 1;
+  position: relative;
+  color: black;
+  font-style: italic;
 }
 
 .weather-container {
-	background-color: rgb(78, 169, 175);
-	/* test */
+  background-color: rgb(78, 169, 175);
+  /* test */
 }
 
-.displaycurrenttemp {
-	background-color: #fdbf43;
-	height: 30px;
-	margin: 0%;
-	padding: 5px;
-}
-.description {
-	background-color: #fdbf43;
-	height: 30px;
-	margin: 0%;
-	padding: 5px;
+.weatherColumn {
+  background-color: #fdbf43;
+  margin: 0%;
+  padding: 5px;
+  height: 130px;
 }
