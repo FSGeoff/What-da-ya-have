@@ -72,6 +72,11 @@ $(document).ready(function () {
 				// Create div to hold restaurant information
 				var restDiv = $("<div>");
 				restDiv.css("margin", "5 px");
+				restDiv.css("background-color", "#d29a34");
+				restDiv.css("border", "solid rgb(70, 155, 216) 2px");
+				restDiv.css("border-radius", "10 px");
+				restDiv.css("margin", "5px");
+				restDiv.css("padding", "5px");
 				restDiv.attr("id", "rest-div");
 
 				// Create <h3> element for restaurant name
@@ -146,6 +151,8 @@ $(document).ready(function () {
 					stationDiv.attr("id", "sta-div");
 					stationDiv.css("background-color", "#469bd8");
 					stationDiv.css("color", "white");
+					stationDiv.css("text-align", "center");
+					stationDiv.css("border", "solid white 2 px");
 					stationDiv.append(currentStation);
 
 					// <p> element for next arrival time
@@ -157,7 +164,7 @@ $(document).ready(function () {
 							response[i].DIRECTION +
 							" bound " +
 							response[i].LINE +
-							" line train will arrive @: " +
+							" line train will arrive @ " +
 							response[i].NEXT_ARR.slice(0, 5)
 					);
 					stationDiv.append(timeAndDirection);
