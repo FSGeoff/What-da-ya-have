@@ -72,6 +72,9 @@ $(document).ready(function () {
 				// Create div to hold restaurant information
 				var restDiv = $("<div>");
 				restDiv.css("margin", "5 px");
+				restDiv.css("background-color", "#d29a34");
+				restDiv.css("margin", "5px");
+				restDiv.css("padding", "5px");
 				restDiv.attr("id", "rest-div");
 
 				// Create <h3> element for restaurant name
