@@ -119,6 +119,7 @@ $(document).ready(function () {
 				restLink.attr("class", "rest-info");
 				restLink.attr("href", restArray[i].restaurant.url);
 				restLink.attr("id", "rest-link");
+				restLink.attr("target", "_blank");
 				restLink.text("More Info");
 				restDiv.append(restLink);
 
