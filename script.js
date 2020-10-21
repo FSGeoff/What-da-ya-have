@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	var getStation = JSON.parse(localStorage.getItem("buttonChoice"));
 	var time = moment().format("LT");
+
 	// Array of objects. Holds all station names and longitude/latitude
 	var trainStops = [
 		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
@@ -118,6 +119,7 @@ $(document).ready(function () {
 				restLink.attr("class", "rest-info");
 				restLink.attr("href", restArray[i].restaurant.url);
 				restLink.attr("id", "rest-link");
+				restLink.attr("target", "_blank");
 				restLink.text("More Info");
 				restDiv.append(restLink);
 
@@ -127,6 +129,7 @@ $(document).ready(function () {
 	}
 
 	function martaCall(stationSelected) {
+		$(".timeNow").append(time);
 		$.ajax({
 			url:
 				"https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
@@ -154,6 +157,7 @@ $(document).ready(function () {
 					timeAndDirection.css("background-color", "#469bd8");
 					timeAndDirection.css("color", "white");
 					timeAndDirection.css("text-align", "center");
+					timeAndDirection.css("font-size", "15px");
 					timeAndDirection.text(
 						"NEXT " +
 							response[i].DIRECTION +
@@ -179,6 +183,7 @@ $(document).ready(function () {
 				$(".station").empty();
 				$(".trainTime").empty();
 				$(".weather").text(time);
+				$(".timeNow").empty();
 
 				martaCall(martaBtn);
 			}
