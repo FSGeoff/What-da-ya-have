@@ -1,6 +1,7 @@
 $(document).ready(function () {
 	var getStation = JSON.parse(localStorage.getItem("buttonChoice"));
 	var time = moment().format("LT");
+
 	// Array of objects. Holds all station names and longitude/latitude
 	var trainStops = [
 		{ station: "Decatur", longitude: "-84.29485", latitude: "33.774784" },
@@ -155,6 +156,7 @@ $(document).ready(function () {
 					timeAndDirection.css("background-color", "#469bd8");
 					timeAndDirection.css("color", "white");
 					timeAndDirection.css("text-align", "center");
+					timeAndDirection.css("font-size", "15px");
 					timeAndDirection.text(
 						"NEXT " +
 							response[i].DIRECTION +
@@ -179,8 +181,8 @@ $(document).ready(function () {
 				$("#select-train").empty();
 				$(".station").empty();
 				$(".trainTime").empty();
-				$(".timeNow").empty();
 				$(".weather").text(time);
+				$(".timeNow").empty();
 
 				martaCall(martaBtn);
 			}
