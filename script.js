@@ -127,6 +127,7 @@ $(document).ready(function () {
 	}
 
 	function martaCall(stationSelected) {
+		$(".timeNow").append(time);
 		$.ajax({
 			url:
 				"https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=89d07faa-bc02-4484-99e9-7e6411db16ee",
@@ -178,6 +179,7 @@ $(document).ready(function () {
 				$("#select-train").empty();
 				$(".station").empty();
 				$(".trainTime").empty();
+				$(".timeNow").empty();
 				$(".weather").text(time);
 
 				martaCall(martaBtn);
